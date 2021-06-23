@@ -4,7 +4,7 @@ import os
 import config
 
 
-def generate_final_results(packet_dir):
+def generate_model_results_csv(packet_dir):
     results_csv_filepath = os.path.join(packet_dir, config.MODEL_RESULTS_FILEPATH)
     classification_csv_filepath = os.path.join(
         packet_dir, config.CLASSIFICATION_FILEPATH
@@ -19,7 +19,7 @@ def generate_final_results(packet_dir):
     classification_df = pd.read_csv(classification_csv_filepath)
     extraction_df = pd.read_csv(extraction_csv_filepath)
     sig_detection_df = pd.read_csv(sig_detection_filepath)
-    
+
     dfs = [classification_df, extraction_df, sig_detection_df]
     final_result_df = merge_results(dfs)
     final_result_df.to_csv(results_csv_filepath, index=False)

@@ -27,6 +27,9 @@ OBJ_DETECT_RESULTS_CSV_PATH = os.path.join(OBJECT_DETECTION_DIR, "signature_dete
 
 MODEL_RESULTS_FILEPATH = os.path.join(RESULTS_DIR, "model_results.csv")
 
+PAGE_RANGES_FILEPATH = os.path.join(RESULTS_DIR, "page_ranges.json")
+FINAL_RESULTS_FILEPATH = os.path.join(RESULTS_DIR, "final_output.json")
+
 OCR_CONFIG = {"preset_config": "ondocument"}
 
 SIGNATURE_ONLY_MODEL_ID = 51

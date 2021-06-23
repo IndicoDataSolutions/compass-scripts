@@ -15,6 +15,7 @@ import os
 from doc_extraction import generate_ocr_output
 from predictions import generate_prediction_output
 from results import generate_final_results
+from generate_final_output import generate_page_range_output
 import config
 
 USAGE_STRING = "python packet_analysis_workflow.py /path/to/packets"
@@ -28,8 +29,8 @@ def analyze_packets():
     initialize_workflow_directories(packet_dir)
     generate_ocr_output(packet_dir)
     generate_prediction_output(packet_dir)
-    generate_final_results(packet_dir)
-
+    generate_model_results_csv(packet_dir)
+    generate_page_range_output(packet_dir)
 
 def get_folder_from_args(args):
     if len(args) != 2:
