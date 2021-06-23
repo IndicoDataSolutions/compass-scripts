@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+
 import config
 
 
@@ -17,7 +19,7 @@ def generate_final_results(packet_dir):
     classification_df = pd.read_csv(classification_csv_filepath)
     extraction_df = pd.read_csv(extraction_csv_filepath)
     sig_detection_df = pd.read_csv(sig_detection_filepath)
-    page_map_df = pd.read_csv(config.FILENAME_PAGE_MAP_CSV_PATH)
+    
     dfs = [classification_df, extraction_df, sig_detection_df]
     final_result_df = merge_results(dfs)
     final_result_df.to_csv(results_csv_filepath, index=False)

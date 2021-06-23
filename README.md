@@ -11,6 +11,8 @@ Setup
 3. set `API_TOKEN_PATH` in `config.py`
 4. `python3 packet_analysis_workflow.py /path/to/packets`
 
+Results will be found in `/path/to/packets/results`
+
 Please note that these scripts were created as a proof of concept and 
 is split into parts for understandability. It is recommended to only have
 ~4-5 documents in the packets directory.
