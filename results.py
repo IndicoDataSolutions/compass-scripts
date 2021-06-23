@@ -1,10 +1,20 @@
 import pandas as pd
 import os
 
+from page_range_calculation import (
+    generate_page_range_output,
+)
 import config
+from utils import save_json
+
+def generate_final_output(packet_dir):
+    result_filepath = os.path.join(packet_dir, config.FINAL_RESULTS_FILEPATH)
+    merge_predictions(packet_dir)
+    page_ranges = generate_page_range_output(packet_dir)
+    save_json(page_ranges, result_filepath)
 
 
-def generate_model_results_csv(packet_dir):
+def merge_predictions(packet_dir):
     results_csv_filepath = os.path.join(packet_dir, config.MODEL_RESULTS_FILEPATH)
     classification_csv_filepath = os.path.join(
         packet_dir, config.CLASSIFICATION_FILEPATH
