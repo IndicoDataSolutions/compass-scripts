@@ -1,5 +1,6 @@
 import os
 import sys
+from tqdm import tqdm
 
 from utils import (
     save_json,
@@ -19,8 +20,12 @@ from indico.queries import DocumentExtraction, JobStatus
 def generate_ocr_output(packet_dir):
     INDICO_CLIENT = create_client(config.HOST, config.API_TOKEN_PATH)
     packet_filepaths = get_filepaths_from_folder(packet_dir, "pdf")
-    ocr_extractions = indico_document_extraction(INDICO_CLIENT, packet_filepaths)
-    save_ocr_data(ocr_extractions, packet_filepaths, packet_dir)
+    batch_size = 6
+    for batch_start in tqdm(range(0,len(packet_filepaths), batch_size)):
+        batch_end = batch_start + batch_size
+        batch_filepaths = packet_filepaths[batch_start:batch_end]
+        ocr_extractions = indico_document_extraction(INDICO_CLIENT, batch_filepaths)
+        save_ocr_data(ocr_extractions, batch_filepaths, packet_dir)
 
 
 def save_ocr_data(ocr_extractions, packet_filepaths, packet_dir):

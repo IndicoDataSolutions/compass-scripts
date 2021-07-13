@@ -26,10 +26,10 @@ def object_detection_predictions(packet_dir):
     ocr_filepaths = get_filepaths_from_folder(ocr_dir, "json")
     pred_dfs = []
 
-    for ocr_filepath in ocr_filepaths:
+    for ocr_filepath in tqdm(ocr_filepaths):
         storage_df = get_storage_urls(ocr_filepath)
         batch_size = 100
-        for batch_start in tqdm(range(0, storage_df.shape[0], batch_size)):
+        for batch_start in range(0, storage_df.shape[0], batch_size):
             batch_end = batch_start + batch_size - 1
             storage_batch_df = storage_df.loc[batch_start:batch_end]
             storage_urls = storage_batch_df["storage_urls"].tolist()

@@ -1,4 +1,5 @@
 import time
+from tqdm import tqdm
 
 from indico import IndicoClient, IndicoConfig
 from indico.queries import (
@@ -75,8 +76,8 @@ def get_prediction_results(indico_client, job, n_retries=3, cooldown=5):
         if isinstance(results, dict):
             if n_retries > 0:
                 time.sleep(cooldown)
-                return predict(
-                    client, model_id, filenames, n_retries - 1, cooldown=cooldown
+                return get_prediction_results(
+                    client, job, n_retries - 1, cooldown=cooldown
                 )
             else:
                 return None
@@ -85,8 +86,8 @@ def get_prediction_results(indico_client, job, n_retries=3, cooldown=5):
     except:
         if n_retries > 0:
             time.sleep(cooldown)
-            return predict(
-                indico_client, model_id, filenames, n_retries - 1, cooldown=cooldown
+            return get_prediction_results(
+                indico_client, job, n_retries - 1, cooldown=cooldown
             )
         else:
             return None
