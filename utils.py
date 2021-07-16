@@ -24,10 +24,15 @@ def initialize_csv(columns, filepath):
 
 
 def open_ocr(ocr_filepath):
-    with open(ocr_filepath) as f:
-        ocr_obj = json.load(f)
+    ocr_obj = open_json(ocr_filepath)
     ondoc_ocr = OnDoc(ocr_obj)
     return ondoc_ocr
+
+
+def open_json(json_filepath):
+    with open(json_filepath) as f:
+        json_obj = json.load(f)
+    return json_obj
 
 
 def prediction_list_to_json(results_list):
