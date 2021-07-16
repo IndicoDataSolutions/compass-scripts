@@ -25,5 +25,6 @@ Create a page text csv
 
 The above creates a directory named `ocr` in the `/path/to/documents` which will
 contain all of the digitizations of the documents. The resulting csv will have the
-following columns ( Filename, Page Number, Page Text). Note you will need to add
-your own mapping for classes.
+following columns ( Filename, Page Number, Page Text). Notes:
+- you will need to add your own mapping for classes. 
+- the doc_extraction.py script can take a while depending on the number of files
