@@ -11,6 +11,7 @@ Compass Indico Platform
 """
 import sys
 import os
+from pathlib import Path
 
 from doc_extraction import generate_ocr_output
 from predictions import generate_prediction_output
@@ -45,12 +46,12 @@ def get_folder_from_args(args):
         print(USAGE_STRING)
         return None
 
-    packet_dir = args[1]
-    if not os.path.isdir(packet_dir):
+    packet_dir = Path(args[1])
+    if not packet_dir.is_dir():
         print(f"{packet_dir} is not a directory")
         return None
 
-    if not os.path.exists(packet_dir):
+    if not packet_dir.exists():
         print(f"{packet_dir} does not exist")
         return None
 

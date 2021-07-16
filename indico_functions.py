@@ -18,10 +18,10 @@ def create_client(host, api_token_path):
     return client
 
 
-def indico_document_extraction(indico_client, packet_filepaths):
+def indico_document_extraction(indico_client, packet_filepaths, ocr_config=config.OCR_CONFIG):
     # Send files to indico for OCR
     jobs = indico_client.call(
-        DocumentExtraction(packet_filepaths, json_config=config.OCR_CONFIG)
+        DocumentExtraction(packet_filepaths, json_config=ocr_config)
     )
     doc_extractions = []
 

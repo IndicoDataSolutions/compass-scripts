@@ -12,9 +12,9 @@ def save_json(indico_obj, filepath):
         f.write(indico_string)
 
 
-def get_filepaths_from_folder(folder, ext):
-    filepath_regex = os.path.join(folder, f"*.{ext}")
-    filepaths = glob.glob(filepath_regex)
+def get_filepaths_from_folder(path, ext):
+    ext_regex = f"*.{ext}"
+    filepaths = path.glob(ext_regex)
     return filepaths
 
 
