@@ -58,9 +58,7 @@ def doc_extraction():
     if not output_dir.exists():
         os.mkdir(output_dir)
     
-    
-    ocr_config = {"preset_config": "simple"}
-    generate_ocr_output(document_dir, ocr_config=ocr_config)
+    generate_ocr_output(document_dir, overwrite=True)
     
 if __name__ == "__main__":
     # packet_dir = "/home/ubuntu/Documents/compass-poc/blind_test/compass_scripts/data/"

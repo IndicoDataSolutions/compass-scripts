@@ -26,10 +26,10 @@ def generate_csv():
 
         ocr_obj = open_json(ocr_filepath)
 
-        for page_num, page in enumerate(ocr_obj["pages"]):
+        for page_num, page in enumerate(ocr_obj):
             doc_dict["Filename"].append(ocr_filepath)
             doc_dict["Page Number"].append(page_num + 1)
-            doc_dict["Page Text"].append(page["text"])
+            doc_dict["Page Text"].append(page["pages"][0]["text"])
         
     page_text_df = pd.DataFrame(doc_dict)
     output_file = ocr_dir / "page_text.csv"

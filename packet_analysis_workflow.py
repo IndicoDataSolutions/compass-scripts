@@ -13,7 +13,7 @@ import sys
 import os
 from pathlib import Path
 
-from doc_extraction import generate_ocr_output
+from doc_digitization import generate_ocr_output
 from predictions import generate_prediction_output
 from results import generate_final_output
 
